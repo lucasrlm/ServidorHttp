@@ -1,6 +1,6 @@
-# Servidor Http Conversor de Inteiros para Valor por Extenso
+# Servidor Http Conversor de Inteiros
 
-O projeto consiste num servidor http que recebe uma requisição http com um valor inteiro passado no path, e retorna um json com o valor por extenso. O inteiro deve estar entre -99999 e 99999.
+O projeto consiste num servidor que recebe uma requisição http com um valor inteiro passado no path e retorna um json com o valor por extenso. O inteiro deve estar entre -99999 e 99999.
 
 ## Início
 

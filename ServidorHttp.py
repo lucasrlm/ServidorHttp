@@ -2,17 +2,17 @@
  
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from ConversorInteiroParaExtenso import *
+import json
  
-# HTTPRequestHandler class
-class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
+class HTTPServer_RequestHandler(BaseHTTPRequestHandler):
  
   # GET
   def do_GET(self):
-        # Send response status code
+        # Status code da resposta
         self.send_response(200)
  
-        # Send headers
-        self.send_header('Content-type','text/html')
+        # Header da resposta
+        self.send_header('Content-type','application/json')
         self.end_headers()
 
         try:
@@ -20,8 +20,9 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             val = self.path.split('/',1)[1]
             valExtenso = converterInteiroParaExtenso(int(val))
 
-            # Write content as utf-8 data
-            self.wfile.write(bytes(valExtenso, "utf8"))
+            # Resposta em json
+            resposta = {'extenso':valExtenso}
+            self.wfile.write(bytes(json.dumps(resposta), "utf8"))
             return
 
         except ValueError as err:
@@ -30,8 +31,8 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
 def run():
   print('Inicializando servidor...')
  
-  server_address = ('127.0.0.1', 3000)
-  httpd = HTTPServer(server_address, testHTTPServer_RequestHandler)
+  server_address = ('0.0.0.0', 8181)
+  httpd = HTTPServer(server_address, HTTPServer_RequestHandler)
   print('Servidor rodando...')
   httpd.serve_forever()
  

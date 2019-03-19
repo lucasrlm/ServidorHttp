@@ -21,7 +21,7 @@ def converterInteiroParaExtenso(val):
         for i in [0,3]:
             var=numero[i]+numero[i+1]+numero[i+2]
             if int(var) != 0:
-                res=tercia(var)
+                res=conversor(var)
                 if i == 0:
                     result=result+res+" mil "
                 elif i == 3:
@@ -41,7 +41,7 @@ def checkInteiro(val):
         else:
             return False
 
-def tercia(num):
+def conversor(num):
     numero=str(num)
     numero.zfill(3)
     a=int(numero[0])

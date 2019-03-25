@@ -14,17 +14,17 @@ Docker para Desktop
 
 1 - Faça o download e instalação do Docker para Desktop através do link https://hub.docker.com/search/?type=edition&offering=community
 
-3 - Crie um diretório e faça o download dos três arquivos contidos nesse repositório para o novo diretório
+2 - Crie um diretório e faça o download dos três arquivos contidos nesse repositório para o novo diretório
 
-4 - Execute os seguintes comandos através da linha de comando:
+3 - Execute os seguintes comandos através da linha de comando:
 	
-	4.1 - docker build -t python-servidor-http .
+	3.1 - docker build -t python-servidor-http .
 	
-	4.2 - docker run -p 8181:8181 python-servidor-http
+	3.2 - docker run -p 8181:8181 python-servidor-http
 	
-5 - Por fim, execute uma requisição http através da linha de comando ou algum software específico (Ex.: Postman)
+4 - Por fim, execute uma requisição http através da linha de comando ou algum software específico (Ex.: Postman)
 
-	5.1 - curl http://localhost:8181/99999
+	4.1 - curl http://localhost:8181/99999
 
 ## Autor
 

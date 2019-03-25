@@ -12,23 +12,47 @@ def converterInteiroParaExtenso(val):
     try:
         if (val > 99999 or val < -99999 or not checkInteiro(val)):
             raise ValueError('O valor para conversão deve ser um número inteiro menor que 100000 e maior que -100000.')
-        result=''
+        
+        res=[]
+        unidadesNulo=False
+        milharesNulo=False
+        espacoUmMilhar=' '
         numero=str(val)
+        conectorMilharesUnidades=''
+        sinal=''
+
         if(val < 0):
-            numero = numero.split("-")[1]
-            result = "menos "
-        numero=numero.zfill(6)+numero
-        for i in [0,3]:
-            var=numero[i]+numero[i+1]+numero[i+2]
+            numero=numero.split("-")[1]
+            sinal='menos '
+
+        numero=numero.zfill(6)
+
+        for i in [0,1]:
+            var=numero[3*i]+numero[3*i+1]+numero[3*i+2]
             if int(var) != 0:
-                res=conversor(var)
+                if(i == 0 and var == '001'):
+                    res.append('')
+                    espacoUmMilhar=''
+                else:
+                    res.append(conversor(var))
+            else:
+                res.append('')
                 if i == 0:
-                    result=result+res+" mil "
-                elif i == 3:
-                    result=result+res
-        if (result == ''):
-            return "zero"
-        return result
+                    milharesNulo=True
+                elif i == 1:
+                    unidadesNulo=True
+
+        if(unidadesNulo and milharesNulo):
+            return 'zero'
+        
+        elif(unidadesNulo and not milharesNulo):
+            conectorMilharesUnidades = espacoUmMilhar+'mil'
+
+        elif(not unidadesNulo and not milharesNulo):
+            conectorMilharesUnidades = espacoUmMilhar+'mil e '
+
+        return sinal+res[0]+conectorMilharesUnidades+res[1]
+
     except ValueError:
         raise
 

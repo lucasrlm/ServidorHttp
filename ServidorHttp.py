@@ -16,7 +16,6 @@ class HTTPServer_RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
         try:
-
             val = self.path.split('/',1)[1]
             valExtenso = converterInteiroParaExtenso(int(val))
 
@@ -26,7 +25,9 @@ class HTTPServer_RequestHandler(BaseHTTPRequestHandler):
             return
 
         except ValueError as err:
-            self.wfile.write(bytes(err.args[0], "utf8"))
+            # Resposta em json
+            resposta = {'erro':err.args[0]}
+            self.wfile.write(bytes(json.dumps(resposta), "utf8"))
  
 def run():
   print('Inicializando servidor...')

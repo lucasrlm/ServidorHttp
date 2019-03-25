@@ -8,14 +8,11 @@ As instruções contidas nesse documento tem como finalidade auxiliar a implanta
 
 ### Pré-requisitos
 
-Python 3
 Docker para Desktop
 
 ### Instalação e Execução
 
-1 - Faça o download e instalação do Python 3.x através do link https://www.python.org/downloads/
-
-2 - Faça o download e instalação do Docker para Desktop através do link https://hub.docker.com/search/?type=edition&offering=community
+1 - Faça o download e instalação do Docker para Desktop através do link https://hub.docker.com/search/?type=edition&offering=community
 
 3 - Crie um diretório e faça o download dos três arquivos contidos nesse repositório para o novo diretório
 
